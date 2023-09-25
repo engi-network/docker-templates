@@ -13,18 +13,6 @@ x-service:
       target: $ENGI_WORKING_DIR
 
 services:
-  storybook:
-    command: npm run storybook
-    <<: *service
-    ports:
-      - 6007
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:6008"]
-      interval: 15s
-      timeout: 5s
-      retries: 6
-      start_period: 120s
-      start_interval: 15s
   tests:
     command: /bin/sh -c "jest --json | tee $ENGI_WORKING_DIR/jest.json"
     <<: *service
@@ -32,9 +20,6 @@ services:
       - STORYBOOK_HOSTNAME=storybook
       - STORYBOOK_PORT=6008
       - STORYBOOK_PREFERS_DARK=true
-    depends_on:
-      storybook:
-        condition: service_healthy
 volumes:
   output:
     external: true
