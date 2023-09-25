@@ -5,8 +5,8 @@ x-test-framework: jest
 x-service:
   &service
   build:
-    context: .
-    dockerfile: Dockerfile.tests
+    context: ..
+    dockerfile: .engi/Dockerfile.tests
   volumes:
     - type: volume
       source: output
