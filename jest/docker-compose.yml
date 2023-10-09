@@ -16,10 +16,6 @@ services:
   tests:
     command: /bin/sh -c "jest --json | tee $ENGI_WORKING_DIR/jest.json"
     <<: *service
-    environment:
-      - STORYBOOK_HOSTNAME=storybook
-      - STORYBOOK_PORT=6008
-      - STORYBOOK_PREFERS_DARK=true
 volumes:
   output:
     external: true
